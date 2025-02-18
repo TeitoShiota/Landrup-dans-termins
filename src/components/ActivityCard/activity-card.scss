@@ -1,0 +1,33 @@
+$border-radius: 10%;
+
+.activity-card{
+    display: flex;
+    position: relative;
+    
+    width: clamp( 250px, 100%, 450px );
+    height: clamp( 250px, 95vw, 450px );
+
+    border-radius: $border-radius $border-radius 0 $border-radius;
+    overflow: hidden;
+
+    .activity-card__content{
+        width: 100%;
+        z-index: 10;
+        position: absolute;
+        bottom: 0;
+        
+        padding: 1rem 2rem;
+        padding-bottom: 0.5rem;
+
+
+        background: rgba(#E1A1E9, 0.8);
+        border-top-right-radius: 2.5rem;
+    }
+    
+    .activity-card__image{
+        width: 100%;
+        height: auto;
+        max-height: 100%;
+        object-fit: cover;
+    }
+}

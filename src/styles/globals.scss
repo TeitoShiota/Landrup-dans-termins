@@ -1,0 +1,68 @@
+html,
+body {
+  max-width: 100dvw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--font-color-white);
+  font-family: 'Ubuntu', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: var(--secondary);
+}
+
+// CSS RESETS
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  min-height: 100dvh;
+
+  &.center-content{
+    justify-content: center;
+  }
+}
+
+.page-main__background-overlay {
+  $overlay-height: 60;
+  width: 150dvw;
+  height: $overlay-height * 1dvh ;
+  top: 0;
+  z-index: -2;
+  position: absolute;
+
+  background-color: #5e2e5380;
+  transform: translateY(( (100 - $overlay-height ) * 1% )) rotate( -27deg );
+
+  &::before {
+      content: ' ';
+  }
+}
+
+@media screen and (min-width: 768px) {
+  main {
+  }
+  
+}
+
+@media screen and (min-width: 1024px) {
+  main {
+  }
+  
+}
+
+@media screen and (min-width: 1110px) {
+  main {
+    max-width: 1110px;
+  }
+  
+}

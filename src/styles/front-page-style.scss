@@ -1,0 +1,36 @@
+h2{
+}
+
+// .front-page-main{
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: flex-end;
+
+//     position: relative;
+
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+// }
+
+.front-page-main{
+    display: grid;
+    grid-template-rows: clamp(10px, 50vh, 60vh) 1fr 0.5fr;
+
+    position: relative;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    > .front-page-heading{
+        grid-row: 2 /3;
+    }
+
+    > .base-button-link{
+        grid-row: 3 / 4;
+        margin: 0 auto;
+    }
+
+}

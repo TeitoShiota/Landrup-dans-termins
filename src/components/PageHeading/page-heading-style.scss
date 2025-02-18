@@ -1,0 +1,6 @@
+.base-page-heading{
+    align-self: flex-start;
+
+    @include heading($font-size-lg, $font-weight-medium, $line-height);
+
+}

@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+
+// Font mixins
+@function font-size($size) {
+  // FIXME - Attempt scaling font - if time is available
+  // @return clamp( calc( $size * 0.2 ),  2 * $size / 2% , $size ) * 1rem
+  @return $size * 1rem;
+}
+
+@function line-height($size) {
+  // FIXME - Change to use meta .type-of 
+  @if( $size type-of($value: string) ){
+    @return $size
+  }
+  @return $size * 1rem;
+}
+
+@function font-weight($weight) {
+  @return $weight;
+}
+
+@function font-family($family) {
+  @return $family;
+}
+
+// Typography
+$font-family: 'Ubuntu', serif;
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$line-height: 1.5;
+
+$font-size-lg: 2.25;
+$font-size-md: 1.5;
+$font-size-sm: 1.125;
+
+
+// SCSS mixins
+@mixin typography($size, $weight, $line-height) {
+  font-size: font-size($size);
+  font-weight: font-weight($weight);
+  line-height: line-height($line-height);
+}
+
+@mixin heading($size, $weight, $line-height) {
+  @include typography($size, $weight, $line-height);
+  margin-bottom: 1rem;
+}
+
+// Heading styles
+
+h1 {
+  @include heading($font-size-lg, $font-weight-bold, $line-height);
+}
+
+h2 {
+  @include heading($font-size-lg, $font-weight-bold, $line-height);
+}
+
+h3 {
+  @include heading($font-size-md, $font-weight-bold, $line-height);
+}
+
+h4 {
+  @include heading($font-size-md, $font-weight-bold, $line-height);
+}
+
+h5 {
+  @include heading($font-size-sm, $font-weight-bold, $line-height);
+}
+
+h6 {
+  @include heading($font-size-sm, $font-weight-bold, $line-height);
+}
+
+// Paragraph styles
+
+p {
+  @include typography($font-size-sm, $font-weight-regular, $line-height);
+  margin-bottom: 1rem;
+}
+
+// Link styles
+
+a {
+  @include typography($font-size-sm, $font-weight-regular, $line-height);
+  color: var(--font-color-black);
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--font-color-white);
+  }
+}
+
+// Button styles
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+
+  color: var(--button-color);
+  background-color: var(--button-background-color);
+  
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--button-background-color);
+  }
+}

@@ -1,0 +1,31 @@
+.activity-page-main{
+
+    display: flex;
+    flex-direction: column;
+
+    > .activity-page-main__hero{
+        width: 100%;
+        height: clamp( 40dvh, 50dvh, 70dvh );
+        position: relative;
+
+        > button{
+            position: absolute;
+            right: 1rem;
+            bottom: 1rem;
+
+            font-size: 18px;
+
+            width: clamp( 30%, 70%, 250px );
+            height: 55px;
+
+        }
+
+        > img{
+            z-index: -1;
+        }
+    }
+
+    > .activity-page-main__content{
+        margin: 0 2rem;
+    }
+}

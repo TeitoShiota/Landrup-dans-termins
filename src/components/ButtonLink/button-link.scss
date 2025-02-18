@@ -1,0 +1,40 @@
+.base-button-link{
+    width: clamp( 175px, 60dvw, 249px );
+    padding: 0.75rem 0;
+    border-radius: 10px;
+
+    color: var(--font-color-white);
+    background-color: var(--secondary);
+
+    
+    @include typography($font-size-md, $font-weight-regular, $line-height);
+    text-align: center;
+
+
+    &.justify-self-end{
+        justify-self: flex-end;
+    }
+
+    &.fade-in{
+        opacity: 0;
+        animation: fadeIn 1s 1.5s forwards;
+    }
+
+}
+
+@keyframes slideInFromLeft {
+    from {
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100;
+    }
+}

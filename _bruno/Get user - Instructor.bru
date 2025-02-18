@@ -1,0 +1,15 @@
+meta {
+  name: Get user - Instructor
+  type: http
+  seq: 8
+}
+
+get {
+  url: http://localhost:4000/api/v1/users/3
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjozLCJ1c2VybmFtZSI6Imluc3RydWN0b3IzIiwicGFzc3dvcmQiOiIkMmEkMTUkZjlHY2VPZnA5ejFtVTdaRHlCbU14ZVROZXFHOHdONTYyYmRuUzBJckpYdHJJSi8xLmlGdFMiLCJmaXJzdG5hbWUiOiJUcmluZSIsImxhc3RuYW1lIjoiTGluZGJhbGxlIiwiYWdlIjoyNywicm9sZSI6Imluc3RydWN0b3IiLCJjcmVhdGVkQXQiOiIyMDIxLTA5LTIzVDA4OjExOjA4LjgxOFoiLCJ1cGRhdGVkQXQiOiIyMDIxLTA5LTIzVDA4OjExOjA4LjgxOFoifSwiaWF0IjoxNzM5NTM2NTQyLCJleHAiOjE3Mzk1NDAxNDJ9.JC79b1jhkEQnV_ymkjen7PAcHAv3KcotNWdXNCPgUfM
+}
