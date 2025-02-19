@@ -14,7 +14,7 @@ type LandrupDansApiActivityObject = {
     maxAge: number,
     createdAt: string,
     updatedAt: string,
-    instructorId: number,
+    instructorId: string,
     assetId: number,
     asset: {
         id: number,
