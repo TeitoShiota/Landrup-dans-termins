@@ -12,8 +12,11 @@ export async function checkUserActivitySignup( activityId : string ) {
     if ( !userId && !token ){
         throw new Error( 'Cookies not found' )
     }
+    if ( !userId && !token ){
+        throw new Error( 'Cookies not found' )
+    }
 
-    const userActivities : [LandrupDansApiActivityObject] = await getUserActivities( userId, token );
+    const userActivities = await getUserActivities( userId, token );
     console.log(await userActivities)
 
     if( userActivities ){
