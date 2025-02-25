@@ -1,36 +1,39 @@
-import { getUserActivities } from "@/actions/user-actions"
 import { getSessionFromCookies } from "@/lib/cookies";
 
 // Components
-import CalendarCard from "@/components/CalendarCard";
 import PageHeading from "@/components/PageHeading";
 
 //Styles
 import './kalender-page-style.scss'
+import UserCalendar from "@/containers/UserCalendar";
+import InstructorCalendar from "@/containers/InstructorCalendar";
 
 export default async function CalendarPage() {
 
     const userSession = await getSessionFromCookies();
 
-    const userActivities = await getUserActivities(
-        (await userSession)?.userId,
-        (await userSession)?.token
-    );    
-
-    return (
-        <main className="calendar-page-main">
-            <PageHeading text="Kalender" />
-            {
-                userActivities ?
-                userActivities?.map(  (item) => {
-                    return (
-                        <CalendarCard activity={item} key={item?.id} />
-                    )
-                }) :
+    if ( userSession?.role === 'instructor' ) {
+        return (
+            <main className="calendar-page-main">
+                <PageHeading text="Kalender" />
+                <InstructorCalendar userSession={ userSession } />
+            </main>
+        )
+    } else if ( userSession?.role === 'default' ) {
+        return (
+            <main className="calendar-page-main">
+                <PageHeading text="Kalender" />
+                <UserCalendar userSession={ userSession } />
+            </main>
+        )
+    } else {
+        return (
+            <main className="calendar-page-main">
+                <PageHeading text="Kalender" />
                 <p>
-                    Ingen aktiviterer fundet
+                    Unable to determine user role
                 </p>
-            }
-        </main>
-    )
+            </main>
+        )
+    }
 }

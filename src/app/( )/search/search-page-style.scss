@@ -1,0 +1,8 @@
+.search-page-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: clamp(150px, 90%, 750px);
+
+    gap: 1rem;
+}

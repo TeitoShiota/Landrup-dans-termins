@@ -1,0 +1,33 @@
+.calendar-card{
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    justify-content: center;
+
+    padding: 1rem 2rem;
+
+    width: 100%;
+    border-radius: 1rem;
+    background-color: #fff;
+
+    .calendar-card__heading{
+        @include typography( $font-size-lg, $font-weight-regular, var(--font-color-black) );
+        margin-bottom: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    p{
+        text-transform: capitalize;
+    }
+
+    &:hover{
+        .calendar-card__heading{
+            color: var(--quaternary);
+        }
+        p {
+            color: var(--quaternary);
+        }
+    }
+}
