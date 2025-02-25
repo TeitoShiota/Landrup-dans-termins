@@ -25,9 +25,12 @@ const authEndpoint = 'http://localhost:4000/auth/token'
  * 5. Stores the session data in cookies if the login is successful.
  * 6. Redirects to the home page upon successful login.
  */
-export async function loginFormAction( state: void | null, payload: unknown ) : Promise<void>{
+export async function loginFormAction( state: void | null, payload: {
+    username: string,
+    password: string
+} ){
     'use server'
-    const formData = payload as FormData
+    const formData = payload as unknown as FormData
     const username = formData.get("username")
     const password = formData.get("password")
 
@@ -44,7 +47,13 @@ export async function loginFormAction( state: void | null, payload: unknown ) : 
     })
 
     if(!validate.success){ // returns an error if the form validation wasn't succesful
-        throw new Error( JSON.stringify(validate.error.format()) )
+        return {
+            formData: {
+                username: username,
+                password: password
+            },
+            errors: validate.error.format()
+        }
     }
 
 
@@ -64,20 +73,33 @@ export async function loginFormAction( state: void | null, payload: unknown ) : 
         )
 
         if ( response.status === 401 ){
-            throw new Error (`Incorrect username or password\n ${response?.statusText} \n Error code: ${ response?.status }`)
+            return {
+                formData: {
+                    username: username,
+                    password: password
+                },
+                error: 'Incorrect username or password'
+            }
         }
 
         if (!response.ok){
-            throw new Error( response?.statusText )
+            return {
+                formData: {
+                    username: username,
+                    password: password
+                },
+                error: `An error occurred while logging in\n ${response?.statusText} \n Error code: ${ response?.status }`
+            }
         }
 
         const data : LandrupDansApiSessionObject = await response.json()
 
         const cookieStore = await cookies();
         cookieStore.set('session', JSON.stringify(data), { maxAge: data?.validUntil})
-    } catch ( error ) {
-        throw new Error ( `Something went wrong with the login: \n ${error}` )
+    } catch ( error : Error | unknown ){ {
+        throw new Error(`An error occurred while logging in\n ${error}`)
     }
+}
 
     redirect( '/aktiviteter' )
 }

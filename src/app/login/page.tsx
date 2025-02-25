@@ -33,18 +33,31 @@ export default function LoginPage(){
                         type="text"
                         name="username"
                         placeholder="brugernavn"
-                        // defaultValue={formState?.username}
+                        defaultValue={formState?.formData?.username ? String(formState.formData.username) : ""}
                         />
+                        <span>
+                            { formState?.errors?.username === undefined ? '' :
+                                formState?.errors?.username?._errors[0]
+                            }
+                        </span>
                     <input
                         type="password"
                         name="password"
                         placeholder="adgangskode"
-                        // defaultValue={formState?.password} 
+                        defaultValue={formState?.formData?.password ? String(formState.formData.password) : "" } 
                         />
+                    <span>
+                            { formState?.errors?.password === undefined ? '' :
+                                formState?.errors?.password?._errors[0]
+                            }
+                    </span>
                     <Button
                         text={isPending ? "Logger ind" : "Log ind"}
                         disabled={isPending}
                         />
+                    <span>
+                        { formState?.error === undefined ? '' : formState.error }
+                    </span>
                 </form>
             </section>
 
