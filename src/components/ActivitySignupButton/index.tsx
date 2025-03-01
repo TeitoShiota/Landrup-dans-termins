@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 // Styles
 import './button-style.scss';
-import { checkUserActivitySignup } from '@/actions/activity-signup';
+import { checkUserActivitySignupAction } from '@/actions/activity-signup';
 
 
 export default function Button(
@@ -21,7 +21,7 @@ export default function Button(
         async function updateSignupStatus() {
             try {
                 setSignupStatus(
-                    await checkUserActivitySignup( activityId )
+                    await checkUserActivitySignupAction( activityId )
                 )
             } catch ( error ) {
                 
