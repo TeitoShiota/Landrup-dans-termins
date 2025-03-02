@@ -3,7 +3,7 @@
 import { getSessionFromCookies } from "./cookie-actions"
 import { getUserActivities } from "./user-actions"
 
-export async function checkUserActivitySignup( activityId : string ) {
+export async function checkUserActivitySignupAction( activityId : string ) {
     const {
         userId,
         token
