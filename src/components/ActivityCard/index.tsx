@@ -30,7 +30,7 @@ export default function ActivityCard({
                 src={ activity?.asset?.url }
                 // placeholder="blur"
                 quality={100}
-                sizes='100vw'
+                sizes='100%'
                 fill={true}
             />
         </Link>

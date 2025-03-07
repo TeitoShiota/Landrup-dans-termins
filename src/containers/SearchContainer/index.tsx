@@ -16,13 +16,14 @@ export default function SearchContainer(
     {
         searchData
     } : {
-        searchData : any[]
+        searchData : LandrupDansApiActivityObject[]
     }
 ) {
 
     const { searchResults, searchQuery, setSearchQuery } = useBasicSearch({
         searchData: searchData,
     });
+
 
     return (
         <>
@@ -54,7 +55,7 @@ export default function SearchContainer(
                             {searchResults.map((item, index) => (
                                 <ActivityCard
                                     key={index}
-                                    activity={item}
+                                    activity={ item }
                                 />
                             ))}
                         </>

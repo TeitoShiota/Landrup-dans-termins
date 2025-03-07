@@ -6,8 +6,8 @@ export function useUserActivitySignup( activityId : string ) {
     'use client';
 
     const [signupStatus, setSignupStatus] = useState<boolean>(false);
-    const [isPending, setIsPending] = useState(false);
-    const [isloggedin, setIsloggedin] = useState(false);
+    const [isPending, setIsPending] = useState<boolean>(false);
+    const [isloggedin, setIsloggedin] = useState<boolean>(false);
 
     async function checkUserActivitySignup( activityId : string ) {
         const signupStatus = await checkUserActivitySignupAction( activityId );
